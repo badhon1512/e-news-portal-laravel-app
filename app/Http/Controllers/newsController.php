@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\news;
 
 class newsController extends Controller
 {
@@ -14,6 +15,10 @@ class newsController extends Controller
     public function index()
     {
         //
+
+        $news= news::all();
+
+        return view('news.home',['news'=>$news]);
     }
 
     /**
@@ -24,6 +29,8 @@ class newsController extends Controller
     public function create()
     {
         //
+        return view('news.create');
+
     }
 
     /**
@@ -35,6 +42,27 @@ class newsController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+            'headline'=>'required',
+            'description'=>'required',
+            'picture'=>'required'
+
+        ]);
+
+
+        $pic = $request->file('picture')->getClientOriginalName();
+
+        $news=new news();
+        $news->headline=$request->headline;
+        $news->description=$request->description;
+        $news->type=$request->type;
+        $news->picture=$pic;
+        $news->save();
+
+
+        return $pic;
+        
     }
 
     /**
@@ -46,6 +74,10 @@ class newsController extends Controller
     public function show($id)
     {
         //
+
+        $item=news::find($id);
+
+        return view('news.show',['item'=>$item]);
     }
 
     /**
