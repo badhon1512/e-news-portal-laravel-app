@@ -112,5 +112,10 @@ class newsController extends Controller
     public function destroy($id)
     {
         //
+
+        $news=news::find($id);
+        $news->delete();
+
+        return redirect('/');
     }
 }

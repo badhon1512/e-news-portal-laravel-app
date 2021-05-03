@@ -1,5 +1,4 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-<div>news page</div>
+@include('layouts.navbar')
 
 <div class="card" style="width: 100%;">
 
@@ -9,7 +8,16 @@
     <h5 class="card-title">{{$item->headline}}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{$item->type}} <span>{{$item->created_at}} </span></h6>
     <p class="card-text">{{$item->description}}</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <a href="#" class="card-link">Update</a>
+
+    <form action="/news/{{$item->id}}" method="POST">
+
+      @csrf
+      {{method_field('DELETE')}}
+
+      <button type="submit">Delete</button>
+
+    </form>
+    
   </div>
 </div>
