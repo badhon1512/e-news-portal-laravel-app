@@ -2,13 +2,25 @@
 @include('layouts.navbar')
  
 
-<div>Home page</div>
+
 
 
 <div class="container">
+  @if (session('delete'))
+
+  <h4>{{session('delete')}}</h4>
+    
+@endif
+
+
+@if (session('update'))
+
+  <h4 class="success">{{session('update')}}</h4>
+    
+@endif
   <div class="row">
 
-    <div class="col-sm-8">
+    <div class="col-sm-9">
       <ul class="list-group">
 
         @foreach ($news as $item)
@@ -31,7 +43,7 @@
 
 
 
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <ul class="list-group">
 
         

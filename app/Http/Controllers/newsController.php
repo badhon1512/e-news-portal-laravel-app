@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\news;
+use Illuminate\Support\Facades\DB;
 
 class newsController extends Controller
 {
@@ -16,7 +17,8 @@ class newsController extends Controller
     {
         //
 
-        $news= news::all();
+        $news= DB::select('SELECT * FROM news
+        ORDER BY created_at DESC');
 
         return view('news.home',['news'=>$news]);
     }
@@ -89,6 +91,10 @@ class newsController extends Controller
     public function edit($id)
     {
         //
+
+        $news=news::find($id);
+
+        return view('news.edit',['news'=>$news]);
     }
 
     /**
@@ -101,6 +107,26 @@ class newsController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $request->validate([
+
+            'headline'=>'required',
+            'description'=>'required'
+
+        ]);
+
+        $news=news::find($id);
+        $news->description=$request->description;
+        $news->type=$request->type;
+        $news->headline=$request->headline;
+
+        $news->save();
+
+        session()->flash('update','news updated successfully');
+
+        return redirect('/');
+
+
     }
 
     /**
@@ -115,6 +141,7 @@ class newsController extends Controller
 
         $news=news::find($id);
         $news->delete();
+        session()->flash('delete','News deleted successfully');
 
         return redirect('/');
     }
