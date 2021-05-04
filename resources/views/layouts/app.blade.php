@@ -50,14 +50,16 @@
                                 <a class="nav-link" href="http://localhost/atp/public/notice">National</a>
                             </li>
     
+                           
                             @if(Auth::check())
                             <li class="nav-item">
                                 <a class="nav-link" href="/news/create">ADD News</a>
                             </li>
                             @endif
-                           
                             <!-- Authentication Links -->
                             @guest
+                            
+                           
                                 @if (Route::has('login'))
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
