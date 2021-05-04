@@ -76,10 +76,18 @@ class newsController extends Controller
     public function show($id)
     {
         //
+        if($id=="international" || $id=="national" || $id=="sports" )
+        {
+            $item=news::where('type',$id)->get();
 
+           return view('news.home',['news'=>$item]);
+        }
+        
+        else{
         $item=news::find($id);
 
         return view('news.show',['item'=>$item]);
+        }
     }
 
     /**

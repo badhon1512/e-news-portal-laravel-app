@@ -31,7 +31,7 @@
             
         
         <li class="list-group-item col-sm-8">
-          <a href="news/{{$item->id}}">
+          <a href="/news/{{$item->id}}">
             <div>
               <h5>{{$item->headline}}</h5>
                <p>{{$item->created_at}}</p>

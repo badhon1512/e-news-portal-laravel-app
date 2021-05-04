@@ -44,10 +44,14 @@
                                 <a class="nav-link" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">International</a>
+                                <a class="nav-link" href="/news/international">International</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="http://localhost/atp/public/notice">National</a>
+                                <a class="nav-link" href="/news/national">National</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/news/sports">Sports</a>
                             </li>
     
                            
