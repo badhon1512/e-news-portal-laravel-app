@@ -1,4 +1,8 @@
-@include('layouts.navbar')
+@extends('layouts.app')
+
+@section('content')
+    
+
 
 
 <form class="col-sm-6 offset-3 mt-5 " enctype="multipart/form-data" action='/news' method="POST">
@@ -42,3 +46,5 @@
     <input type="submit" class="form-control btn btn-primary" >
   </div>
 </form>
+
+@endsection

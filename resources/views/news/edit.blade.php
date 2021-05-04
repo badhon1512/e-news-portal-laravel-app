@@ -1,4 +1,8 @@
-@include('layouts.navbar')
+@extends('layouts.app')
+
+@section('content')
+    
+
 
 
 <form class="col-sm-6 offset-3 mt-5 "  action='/news/{{$news->id}}' method="POST">
@@ -48,3 +52,5 @@
 </form>
 
 
+
+@endsection
